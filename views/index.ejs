@@ -37,8 +37,8 @@ color:#2A2C2B;
 </head>
 <body>
 <div>
-<% file.forEach(f => { %>
-<p><i class="fas fa-film"></i>	<a href="/download/<%= f %>" download ><%=f%></a> </p>
+<% files.forEach(f => { %>
+<p><i class="<%=f[1]%>"></i>	<a href="/download/<%= f[0] %>" download ><%=f%></a> </p>
 <%});%>
 </div>
 

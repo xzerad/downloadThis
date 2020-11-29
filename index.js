@@ -8,8 +8,21 @@ app.set("view engine", "ejs");
 
 app.get("/", (req, res)=>{
 try{
+var t_file = [];
 const files = fs.readdirSync("/home/xzerad/");
-var dir = {file:files}
+for (var i= 0; i<files.length; i++ ){
+	let ext = path.extname(files[i])
+	if (ext === ".jpg" || ext == ".png")
+	class_ = "fas fa-file-image "
+	else if (ext == ".mp3")
+	class_ = "fas fa-file-audio"
+	else if (ext == ".mp4")
+	class_ = "fas fa-film"
+	else
+	class_ = "fas fa-archive"
+	t_file.push([files[i], class_ ])
+}
+var dir = {files:t_file}
 res.render("index", dir);
 }catch(err){
 console.log(err);
