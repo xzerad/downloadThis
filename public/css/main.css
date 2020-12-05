@@ -45,7 +45,6 @@ a{
 li{
 border: 1px solid gray;
 padding: 10px;
-padding: 10px;
 margin: 2px auto;
 }
 p{
@@ -96,9 +95,15 @@ span{
 span.download{
     color: #BDC3C7;
     position: absolute;
-    top: 6%;
+    top: 4%;
     right: 13%;
     font-weight: bold;
+    border: 1px solid gray;
+    padding: 10px;
+    margin: 2px auto;
+
 }
 
-
+h1{
+display: inline-block;
+}
