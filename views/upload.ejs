@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="upload">
-<div>
+<div class="upload">
 	<form action="/upload" method="post" enctype="multipart/form-data">
 		<label for="files"> Select files</label>
 		<input type="file" id="files" name="files" multiple/>
@@ -19,16 +19,8 @@
 <div>
 
 <script>
+
 var uploadedFiles = document.querySelector("#files")
-
-uploadedFiles.addEventListener('click', function() {
-		if(uploadedFiles.files.length == 0) {
-			alert('Error : No file selected');
-			return;
-		}
-document.getElementById('status').innerHTML = uploadedFiles.files.length + 'file selected';
-
-})
 
 
 uploadedFiles.onchange = function() {
@@ -36,7 +28,7 @@ uploadedFiles.onchange = function() {
 			alert('Error : No file selected');
 			return;
 		}
-document.getElementById('status').innerHTML = uploadedFiles.files.length + 'file selected';
+document.getElementById('status').innerHTML = uploadedFiles.files.length + ' Files selected';
 
 }
 </script>

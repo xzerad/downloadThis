@@ -8,13 +8,14 @@ IndexOf
 <link rel="stylesheet" href="css/main.css">
 
 </head>
-<body>
+<body class="download">
 <div class='download'>
 <% files.forEach(f => { %>
 <p><i class="<%=f[1]%>"></i>	<a href="/download/<%= f[0] %>" download ><%=f[0]%></a> </p>
 <%});%>
+
+<div style="height:30px; width:100%">
 </div>
-
-
+</div>
 </body>
 </html>
