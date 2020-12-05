@@ -10,14 +10,16 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 var storage = multer.diskStorage({
-	dist: function(req, file, callback){
-		callback(null, './uploads');
-	},
-	filename: function(req, file, callback){
-		callback(null, file.originalname);
-	}
-});
-var upload = multer({storage: storage})
+  destination: function (req, file, cb) {
+    cb(null, 'uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+
+var upload = multer({ storage: storage })
+
 app.get("/", (req, res)=>{
 
 res.render("index");
@@ -50,7 +52,7 @@ console.log(err);
 app.get("/upload", (req, res)=>{
 res.render("upload");
 });
-app.post("/upload", upload.array(30), (req, res, next)=>{
+app.post("/upload", upload.array("files", 30), (req, res, next)=>{
 	res.end("files uploaded");
 	
 
