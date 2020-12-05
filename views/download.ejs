@@ -9,7 +9,21 @@ IndexOf
 
 </head>
 <body class="download">
+
 <div class='download'>
+<header>
+<div>
+<a href="/">
+<h1>
+IndexOf
+</h1>
+</a>
+
+<a href="/upload">
+<span class="download">Upload</span>
+</a>
+</div>
+</header>
 <% files.forEach(f => { %>
 <p><i class="<%=f[1]%>"></i>	<a href="/download/<%= f[0] %>" download ><%=f[0]%></a> </p>
 <%});%>
