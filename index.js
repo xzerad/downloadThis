@@ -1,12 +1,29 @@
 const fs = require("fs");
 const express = require("express");
 const path = require("path");
+const multer = require("multer");
+const bodyParser = require("body-parser");
 const app = express();
 
+app.use(bodyParser.json());
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
+var storage = multer.diskStorage({
+	dist: function(req, file, callback){
+		callback(null, './uploads');
+	},
+	filename: function(req, file, callback){
+		callback(null, file.originalname);
+	}
+});
+var upload = multer({storage: storage})
 app.get("/", (req, res)=>{
+
+res.render("index");
+});
+
+app.get("/download", (req, res)=>{
 try{
 var t_file = [];
 const files = fs.readdirSync("/home/xzerad/");
@@ -23,10 +40,19 @@ for (var i= 0; i<files.length; i++ ){
 	t_file.push([files[i], class_ ])
 }
 var dir = {files:t_file}
-res.render("index", dir);
+res.render("download", dir);
 }catch(err){
 console.log(err);
 }
+
+});
+
+app.get("/upload", (req, res)=>{
+res.render("upload");
+});
+app.post("/upload", upload.array(30), (req, res, next)=>{
+	res.end("files uploaded");
+	
 
 });
 

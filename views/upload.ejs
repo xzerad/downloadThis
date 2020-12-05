@@ -1,0 +1,45 @@
+<!doctype>
+
+<html>
+<head>
+<title>Upload</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body class="upload">
+<div>
+	<form action="/upload" method="post" enctype="multipart/form-data">
+		<label for="files"> Select files</label>
+		<input type="file" id="files" name="files" multiple/>
+		<span id="status"></span><br/>
+		<label for="upload">Upload</label>
+		<input type="submit" id="upload" name="upload"/>
+
+	</form>
+<div>
+
+<script>
+var uploadedFiles = document.querySelector("#files")
+
+uploadedFiles.addEventListener('click', function() {
+		if(uploadedFiles.files.length == 0) {
+			alert('Error : No file selected');
+			return;
+		}
+document.getElementById('status').innerHTML = uploadedFiles.files.length + 'file selected';
+
+})
+
+
+uploadedFiles.onchange = function() {
+		if(uploadedFiles.files.length == 0) {
+			alert('Error : No file selected');
+			return;
+		}
+document.getElementById('status').innerHTML = uploadedFiles.files.length + 'file selected';
+
+}
+</script>
+</body>
+
+</html>
